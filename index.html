@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل المنظومة الكلية للاختبارات والتحليل الذكي - د. سامي بن محمد العمر</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --accent: #0284c7;
+            --bg-light: #f8fafc;
+            --text-dark: #0f172a;
+            --border-color: #cbd5e1;
+            --card-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #f1f5f9;
+            color: var(--text-dark);
+            margin: 0;
+            padding: 20px;
+            direction: rtl;
+            line-height: 1.6;
+        }
+
+        .paper-container {
+            max-width: 900px;
+            margin: auto;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            border: 1px solid var(--border-color);
+        }
+
+        .dedication-badge {
+            background: linear-gradient(135deg, #1e3a8a, #0284c7);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 12px rgba(30, 58, 138, 0.2);
+        }
+
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 20px;
+            margin-bottom: 25px;
+            gap: 15px;
+        }
+
+        .header-title h1 {
+            color: var(--primary);
+            margin: 0 0 5px 0;
+            font-size: 1.6rem;
+            font-weight: 800;
+        }
+
+        .header-title h3 {
+            color: var(--accent);
+            margin: 0;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        .print-btn {
+            background-color: #10b981;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+            font-family: inherit;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.3s;
+            white-space: nowrap;
+        }
+
+        .print-btn:hover {
+            background-color: #059669;
+            transform: translateY(-2px);
+        }
+
+        .section-title {
+            background-color: #e0f2fe;
+            color: var(--primary);
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin: 25px 0 15px 0;
+            border-right: 5px solid var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        @media (max-width: 768px) {
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card-qr {
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+            background: var(--bg-light);
+            box-shadow: var(--card-shadow);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card-qr h4 {
+            margin: 0 0 10px 0;
+            color: var(--primary);
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+
+        .qr-box {
+            display: flex;
+            justify-content: center;
+            margin: 10px 0;
+            background: white;
+            padding: 8px;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        .card-qr a {
+            font-size: 0.75rem;
+            color: var(--accent);
+            word-break: break-all;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            margin-top: 5px;
+        }
+
+        .features-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            padding: 0;
+            list-style: none;
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .features-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .features-list li {
+            background: var(--bg-light);
+            border: 1px solid #e2e8f0;
+            padding: 12px 15px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            box-shadow: var(--card-shadow);
+        }
+
+        .features-list li strong {
+            color: var(--primary);
+            display: block;
+            margin-bottom: 4px;
+            font-size: 0.95rem;
+        }
+
+        .code-container {
+            position: relative;
+        }
+
+        .code-block {
+            background-color: #0f172a;
+            color: #38bdf8;
+            padding: 15px;
+            border-radius: 12px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.8rem;
+            direction: ltr;
+            text-align: left;
+            max-height: 280px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            border: 1px solid var(--primary);
+            line-height: 1.4;
+        }
+
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            font-weight: bold;
+            color: var(--primary);
+            border-top: 2px dashed var(--border-color);
+            padding-top: 15px;
+            font-size: 0.85rem;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .paper-container {
+                box-shadow: none;
+                border: none;
+                padding: 0;
+                max-width: 100%;
+                width: 100%;
+            }
+            .no-print {
+                display: none !important;
+            }
+            .code-block {
+                max-height: none;
+                overflow: visible;
+                white-space: pre-wrap;
+                font-size: 0.7rem;
+            }
+            .card-qr, .features-list li {
+                break-inside: avoid;
+            }
+            @page {
+                size: A4;
+                margin: 1.5cm;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="paper-container">
+
+    <div class="dedication-badge">
+        🎁 رسالة إهداء وتوثيق المنظومة الكلية الرقمية لسعادة الدكتور / سامي بن محمد العمر
+    </div>
+
+    <div class="header-section">
+        <div class="header-title">
+            <h1>دليل المنظومة الكلية للاختبارات والتحليل الذكي 🚀</h1>
+            <h3>ربط متكامل مع سحابة Firebase ومستودع GitHub Pages</h3>
+        </div>
+        <button class="print-btn no-print" onclick="window.print()">
+            <i class="fas fa-print"></i> طباعة / حفظ PDF
+        </button>
+    </div>
+
+    <div class="section-title">
+        <i class="fas fa-qrcode"></i> المنصات والروابط المباشرة (مزودة بـ QR للوصول السريع)
+    </div>
+    
+    <div class="grid-3">
+        <div class="card-qr">
+            <h4>1️⃣ منصة الاختبارات الإلكترونية</h4>
+            <div class="qr-box" id="qr1"></div>
+            <a href="https://school1school2-stack.github.io/Samy" target="_blank">Samy - منصة الاختبارات</a>
+        </div>
+        
+        <div class="card-qr">
+            <h4>2️⃣ لوحة التحليل الذكي والنتائج</h4>
+            <div class="qr-box" id="qr2"></div>
+            <a href="https://school1school2-stack.github.io/Samy1" target="_blank">Samy1 - لوحة التحكم والتحليل</a>
+        </div>
+        
+        <div class="card-qr">
+            <h4>3️⃣ لوحة إدارة الطلاب والاعتمادات</h4>
+            <div class="qr-box" id="qr3"></div>
+            <a href="https://school1school2-stack.github.io/Samy2" target="_blank">Samy2 - قائمة الطلاب المعتمدين</a>
+        </div>
+    </div>
+
+    <div class="section-title">
+        <i class="fas fa-star"></i> أهم المزايا والخصائص التقنية للمنظومة
+    </div>
+
+    <ul class="features-list">
+        <li>
+            <strong>📊 المتابعة اللحظية والبيانات التحليلية:</strong>
+            عرض فوري للنتائج، الرسوم البيانية، ومستويات الطلاب مع الترتيب التلقائي لأعلى 5 طلاب وأدنى 5 طلاب لمتابعتهم بدقة.[span_0](start_span)[span_0](end_span)[span_1](start_span)[span_1](end_span)
+        </li>
+        <li>
+            <strong>☁️ الحفظ والتعديل الفوري بالسحابة:</strong>
+            حفظ البيانات وتحديثها لحظياً في سحابة Firebase وانعكاس ذلك فوراً للمعلم والطالب دون الحاجة لتحديث الصفحة.[span_2](start_span)[span_2](end_span)[span_3](start_span)[span_3](end_span)
+        </li>
+        <li>
+            <strong>🚀 استيراد الأسئلة دفعة واحدة:</strong>
+            لصق مصفوفة الأسئلة دفعة واحدة دون عناء وتوزيعها على أقسام الاختبار وقوائم الأسئلة في ثوانٍ معدودة.[span_4](start_span)[span_4](end_span)
+        </li>
+        <li>
+            <strong>✏️ التعديل التفاعلي والخلط العشوائي:</strong>
+            تعديل السؤال وانعكاسه في لحظته في مصفوفة الأسئلة، مع إمكانية الحذف، إنشاء رابط مشاركة، والخلط العشوائي للأسئلة لكل طالب.[span_5](start_span)[span_5](end_span)[span_6](start_span)[span_6](end_span)
+        </li>
+        <li>
+            <strong>🔒 التوثيق عبر بريد منصة مدرستي:</strong>
+            حماية الاختبار وتقييد الدخول وحصره بالطلاب المضافين المعتمدين فقط عبر البريد الإلكتروني الرسمي من المنصة الثالثة.[span_7](start_span)[span_7](end_span)[span_8](start_span)[span_8](end_span)
+        </li>
+        <li>
+            <strong>🤖 مشاركة المصفوفة مع جمناي (Gemini):</strong>
+            حفظ جميع نماذج الاختبارات مع مصفوفة الأسئلة ومشاركتها مع جمناي لبناء مصفوفات نماذج مماثلة بالشروط المطلوبة.[span_9](start_span)[span_9](end_span)
+        </li>
+    </ul>
+
+    <div class="section-title">
+        <i class="fas fa-code"></i> مصفوفة الأسئلة البرمجية المعتمدة (صالحة للمشاركة مع جمناي)
+    </div>
+
+    <div class="code-container">
+        <div class="code-block" id="jsonCode">const rawQuizData = [
+  {
+    "t": "اختر الإجابة الصحيحة",
+    "q": "معنى كلمة (الفرقان) في قوله تعالى: {تَبَارَكَ الَّذِي نَزَّلَ الْفُرْقَانَ عَلَى عَبْدِهِ}:",
+    "ans": "القرآن الكريم",
+    "score": 1,
+    "opts": ["القرآن الكريم", "التوراة", "الإنجيل", "الصحف"]
+  },
+  {
+    "t": "عرّف",
+    "q": "عرّف علم التفسير اصطلاحاً.",
+    "ans": "هو علم يفهم به كتاب الله المنزل على نبيه محمد صلى الله عليه وسلم وبيان معانيه واستخراج أحكامه وحكمه.",
+    "score": 1
+  },
+  {
+    "t": "عددّد",
+    "q": "عددّد المصادر الرئيسية للتفسير بالمأثور:",
+    "ans": "تفسير القرآن بالقرآن، تفسير القرآن بالسنة النبوية، تفسير القرآن بأقوال الصحابة",
+    "score": 3,
+    "opts": ["بالقرآن", "بالسنة", "بالصحابة"],
+    "subScores": [1, 1, 1]
+  },
+  {
+    "t": "صح وخطأ",
+    "q": "التفسير بالرأي المحض دون ضوابط شرعية ولغوية جائز ومحمود.",
+    "ans": "خطأ",
+    "score": 1,
+    "opts": ["صح", "خطأ"]
+  },
+  {
+    "t": "مزاوجة",
+    "q": "طابق بين الكلمات القرآنية ومعانيها الصحيحة فيما يلي:",
+    "ans": "1 2 3",
+    "score": 3,
+    "opts": ["الفرقان", "يحطمنكم", "أوزعني"],
+    "rightOpts": ["القرآن الكريم الفارق بين الحق والباطل", "يهلكنكم ويكسرنكم", "ألهمني وأوزع لي أن أشكر"],
+    "subScores": [1, 1, 1]
+  },
+  {
+    "t": "اذكر",
+    "q": "اذكر اثنين من شروط المفسر المقبول تفسيره.",
+    "ans": "صحة العقيدة، التجرد من الهوى، العلم باللغة العربية، العلم بأصول التفسير.",
+    "score": 1
+  },
+  {
+    "t": "صحح الخطأ",
+    "q": "الخطأ: أول ما نزل من القرآن الكريم مطلقاً هي سورة الفاتحة.",
+    "ans": "أول ما نزل من القرآن الكريم هي الآيات الأولى من سورة العلق",
+    "score": 1
+  },
+  {
+    "t": "اختر الإجابة الصحيحة",
+    "q": "استمر نزول القرآن الكريم المفرق على النبي صلى الله عليه وسلم على مدى:",
+    "ans": "23 سنة",
+    "score": 1,
+    "opts": ["23 سنة", "20 سنة", "25 سنة", "15 سنة"]
+  },
+  {
+    "t": "عددّد",
+    "q": "عددّد ثلاثة من أشهر مفسري الصحابة رضي الله عنهم:",
+    "ans": "عبدالله بن عباس، عبدالله بن مسعود، علي بن أبي طالب",
+    "score": 3,
+    "opts": ["ابن عباس", "ابن مسعود", "علي بن أبي طالب"],
+    "subScores": [1, 1, 1]
+  },
+  {
+    "t": "صح وخطأ",
+    "q": "تعتبر سورة الفاتحة أم الكتاب وأعظم سورة في القرآن الكريم.",
+    "ans": "صح",
+    "score": 1,
+    "opts": ["صح", "خطأ"]
+  },
+  {
+    "t": "عرّف",
+    "q": "عرّف أسباب النزول.",
+    "ans": "هو ما نزل قرآن بشأنه وقت وقوعه كحدث أو سؤال استفسر عنه المعاصرون لزمن النبوة.",
+    "score": 1
+  },
+  {
+    "t": "مزاوجة",
+    "q": "زاوج بين اسم المؤلف وكتابه التفسيري الشهير:",
+    "ans": "1 2 3",
+    "score": 3,
+    "opts": ["ابن جرير الطبري", "ابن كثير", "القرطبي"],
+    "rightOpts": ["جامع البيان عن تأويل آي القرآن", "تفسير القرآن العظيم", "الجامع لأحكام القرآن"],
+    "subScores": [1, 1, 1]
+  },
+  {
+    "t": "اذكر",
+    "q": "اذكر اثنين من مقاصد نزول القرآن الكريم.",
+    "ans": "الهداية للتي هي أقوم، التعبد بتلاوته، الإعجاز والتحدي، تنظيم حياة البشر وأحكامهم.",
+    "score": 1
+  },
+  {
+    "t": "صحح الخطأ",
+    "q": "الخطأ: جمع القرآن الكريم في مصحف واحد أول مرة كان في عهد عثمان بن عفان رضي الله عنه.",
+    "ans": "جمع القرآن الكريم في مصحف واحد كان في عهد أبي بكر الصديق رضي الله عنه",
+    "score": 1
+  },
+  {
+    "t": "اختر الإجابة الصحيحة",
+    "q": "أطول سورة في القرآن الكريم هي سورة:",
+    "ans": "البقرة",
+    "score": 1,
+    "opts": ["البقرة", "آل عمران", "النساء", "المائدة"]
+  },
+  {
+    "t": "صح وخطأ",
+    "q": "جميع سور القرآن الكريم تبدأ بالبسملة ما عدا سورة التوبة.",
+    "ans": "صح",
+    "score": 1,
+    "opts": ["صح", "خطأ"]
+  },
+  {
+    "t": "عددّد",
+    "q": "عددّد ثلاثة من مميزات القرآن المكي:",
+    "ans": "قصر الآيات والسور، النداء بـ (يا أيها الناس)، التركيز على قضية العقيدة والتوحيد",
+    "score": 3,
+    "opts": ["قصيرة", "الجميع", "التوحيد"],
+    "subScores": [1, 1, 1]
+  },
+  {
+    "t": "عرّف",
+    "q": "عرّف القرآن الكريم شرعاً.",
+    "ans": "هو كلام الله المنزل على محمد صلى الله عليه وسلم المتعبد بتلاوته المعجز بأقصر سورة منه المنقول إلينا بالتواتر.",
+    "score": 1
+  },
+  {
+    "t": "مزاوجة",
+    "q": "صل بين المصطلح وتعريفه الصحيح:",
+    "ans": "1 2 3",
+    "score": 3,
+    "opts": ["المحكم", "المتشابه", "النسخ"],
+    "rightOpts": ["ما وضح معناه ولم يحتمل إلا وجهاً واحداً", "ما استأثر الله بعلمه أو احتمل وجوهاً متعددة", "رفع حكم شرعي بدليل شرعي متأخر"],
+    "subScores": [1, 1, 1]
+  },
+  {
+    "t": "اذكر",
+    "q": "اذكر اسمين من أسماء القرآن الكريم المذكورة في آياته.",
+    "ans": "الفرقان، الكتاب، الذكر، النور، التنزيل.",
+    "score": 1
+  },
+  {
+    "t": "صحح الخطأ",
+    "q": "الخطأ: عدد أجزاء القرآن الكريم أربعون جزءاً.",
+    "ans": "عدد أجزاء القرآن الكريم ثلاثون جزءاً",
+    "score": 1
+  },
+  {
+    "t": "اختر الإجابة الصحيحة",
+    "q": "السورة التي تسمى (عروس القرآن) هي سورة:",
+    "ans": "الرحمن",
+    "score": 1,
+    "opts": ["الرحمن", "يس", "الواقعة", "الملك"]
+  },
+  {
+    "t": "صح وخطأ",
+    "q": "عدد سور القرآن الكريم هو 112 سورة.",
+    "ans": "خطأ",
+    "score": 1,
+    "opts": ["صح", "خطأ"]
+  },
+  {
+    "t": "عددّد",
+    "q": "عددّد ثلاثة من أشهر كتب التفسير بالرأي المحمود:",
+    "ans": "الكشاف للزمخشري، مفاتيح الغيب للرازي، أنوار التنزيل للبيضاوي",
+    "score": 3,
+    "opts": ["الزمخشري", "الرازي", "البيضاوي"],
+    "subScores": [1, 1, 1]
+  },
+  {
+    "t": "عرّف",
+    "q": "عرّف المكي والمدني باعتبار ضابط زمن النزول.",
+    "ans": "المكي ما نزل قبل هجرة النبي صلى الله عليه وسلم، والمدني ما نزل بعد الهجرة النبوية وإن كان بغير المدينة.",
+    "score": 1
+  },
+  {
+    "t": "مزاوجة",
+    "q": "زاوج بين اسم السورة والميزة التي اختصت بها:",
+    "ans": "2 1 3",
+    "score": 3,
+    "opts": ["سورة الفاتحة", "سورة الإخلاص", "سورة البقرة"],
+    "rightOpts": ["تعدل ثلث القرآن الكريم", "تعدل ثلث القرآن في المعنى وتسمى السبع المثاني", "أعظم سورة وتضم أعظم آية (آية الكرسي)"],
+    "subScores": [1, 1, 1]
+  },
+  {
+    "t": "اذكر",
+    "q": "اذكر فضلين من فضائل تلاوة القرآن الكريم.",
+    "ans": "تحصيل الحسنات مضاعفة، تنزل السكينة وحفاف الملائكة، الشفاعة لصاحبه يوم القيامة.",
+    "score": 1
+  },
+  {
+    "t": "صحح الخطأ",
+    "q": "الخطأ: التفسير بالمأثور يقصد به الاعتماد على الاجتهاد واللغة دون أثر معثور.",
+    "ans": "التفسير بالمأثور هو التفسير بالنقل عن القرآن أو السنة أو الصحابة أو التابعين",
+    "score": 1
+  },
+  {
+    "t": "اختر الإجابة الصحيحة",
+    "q": "أنزل القرآن الكريم كاملاً إلى السماء الدنيا في ليلة القدر في:",
+    "ans": "بيت العزة",
+    "score": 1,
+    "opts": ["بيت العزة", "البيت المأمور", "المسجد الأقصى", "بيت المقدس"]
+  },
+  {
+    "t": "صح وخطأ",
+    "q": "المكي من القرآن هو ما نزل قبل الهجرة ولو في غير مكة.",
+    "ans": "صح",
+    "score": 1,
+    "opts": ["صح", "خطأ"]
+  },
+  {
+    "t": "عددّد",
+    "q": "عددّد مراحل جمع القرآن الكريم:",
+    "ans": "الجمع في عهد النبي صلى الله عليه وسلم، الجمع في عهد أبي بكر الصديق، النسخ في عهد عثمان بن عفان",
+    "score": 3,
+    "opts": ["النبي", "أبو بكر", "عثمان"],
+    "subScores": [1, 1, 1]
+  },
+  {
+    "t": "عرّف",
+    "q": "عرّف التفسير بالمأثور.",
+    "ans": "هو بيان معنى الآية بما جاء في القرآن نفسه، أو في السنة النبوية، أو عن الصحابة والتابعين.",
+    "score": 1
+  },
+  {
+    "t": "مزاوجة",
+    "q": "طابق بين الكلمة القرآنية ومعناها:",
+    "ans": "1 2 3",
+    "score": 3,
+    "opts": ["الصمد", "علق", "الغاسق"],
+    "rightOpts": ["الذي تصمد وتتجه إليه الخلائق في حوائجها", "دم جامد ملتصق", "الليل إذا أظلم ودخل"],
+    "subScores": [1, 1, 1]
+  },
+  {
+    "t": "اذكر",
+    "q": "اذكر اثنين من ضوابط التفسير بالرأي المحمود.",
+    "ans": "موافقة لغة العرب، عدم مخالفة النص الشرعي أو الإجماع، الاعتماد على أصول الشريعة.",
+    "score": 1
+  },
+  {
+    "t": "صحح الخطأ",
+    "q": "الخطأ: السورة المدنية الوحيدة التي تخلو من ذكر الجهاد هي سورة البقرة.",
+    "ans": "سورة النصر مدنية وتخلو من أحكام الجهاد والتشريعات التفصيلية",
+    "score": 1
+  }
+];</div>
+    </div>
+
+    <div class="footer">
+        منظومة الاختبارات الرقمية والتحليل الذكي - تم التطوير والربط لصالح الدكتور سامي بن محمد العمر © 2026
+    </div>
+
+</div>
+
+<script>
+    window.onload = function() {
+        new QRCode(document.getElementById("qr1"), {
+            text: "https://school1school2-stack.github.io/Samy",
+            width: 100,
+            height: 100
+        });
+
+        new QRCode(document.getElementById("qr2"), {
+            text: "https://school1school2-stack.github.io/Samy1",
+            width: 100,
+            height: 100
+        });
+
+        new QRCode(document.getElementById("qr3"), {
+            text: "https://school1school2-stack.github.io/Samy2",
+            width: 100,
+            height: 100
+        });
+    };
+</script>
+
+</body>
+</html>
