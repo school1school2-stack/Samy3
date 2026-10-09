@@ -70,18 +70,8 @@
             color: #fceade;
         }
 
-        .highlight-gold {
-            color: var(--yellow-gold);
-            font-weight: bold;
-        }
-
-        .highlight-maroon {
-            color: var(--maroon-primary);
-            font-weight: 800;
-            background-color: #fbe3e4;
-            padding: 2px 8px;
-            border-radius: 6px;
-        }
+        .highlight-gold { color: var(--yellow-gold); font-weight: bold; }
+        .highlight-maroon { color: var(--maroon-primary); font-weight: 800; background-color: #fbe3e4; padding: 2px 8px; border-radius: 6px; }
 
         .header-section {
             display: flex;
@@ -201,7 +191,7 @@
             display: block;
         }
 
-        /* معرض الصور المدمجة من المنظومة */
+        /* معرض الصور المدمجة بترميز Base64 */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -222,8 +212,10 @@
 
         .gallery-item img {
             width: 100%;
-            height: 220px;
-            object-fit: cover;
+            height: auto;
+            max-height: 250px;
+            object-fit: contain;
+            background: #ffffff;
             border-radius: 10px;
             border: 1px solid var(--beige-border);
             margin-bottom: 10px;
@@ -236,7 +228,6 @@
             display: block;
         }
 
-        /* قائمة الشرح والتفاصيل المبتكرة */
         .details-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -266,11 +257,6 @@
             font-size: 1.05rem;
         }
 
-        /* مربع الكود البرمجي لمشروع السحابة وجمناي */
-        .code-container {
-            margin-bottom: 25px;
-        }
-
         .code-block {
             background-color: #2b1e1a;
             color: #ffd166;
@@ -298,33 +284,17 @@
             font-size: 0.95rem;
         }
 
-        /* إعدادات الطباعة والتصدير لـ PDF */
         @media print {
             body { background: white; padding: 0; }
             .paper-container {
-                box-shadow: none;
-                border: none;
-                padding: 0;
-                max-width: 100%;
-                width: 100%;
-                background: white;
+                box-shadow: none; border: none; padding: 0; max-width: 100%; width: 100%; background: white;
             }
             .no-print { display: none !important; }
             .code-block {
-                max-height: none;
-                overflow: visible;
-                white-space: pre-wrap;
-                font-size: 0.72rem;
-                background-color: #1a100c !important;
-                color: #ffd166 !important;
+                max-height: none; overflow: visible; white-space: pre-wrap; font-size: 0.72rem; background-color: #1a100c !important; color: #ffd166 !important;
             }
-            .card-qr, .gallery-item, .details-grid li {
-                break-inside: avoid;
-            }
-            @page {
-                size: A4;
-                margin: 1.2cm;
-            }
+            .card-qr, .gallery-item, .details-grid li { break-inside: avoid; }
+            @page { size: A4; margin: 1.2cm; }
         }
     </style>
 </head>
@@ -376,26 +346,26 @@
         </div>
     </div>
 
-    <!-- قسم الصور التوضيحية من داخل المنظومة -->
+    <!-- قسم الصور التوضيحية من داخل المنظومة (مدمجة مباشرة بدقة عالية) -->
     <div class="section-title">
         <i class="fas fa-images"></i> الواجهات والبيانات التشغيلية داخل المنظومة
     </div>
 
     <div class="gallery-grid">
         <div class="gallery-item">
-            <img src="1000256185_2.jpg" alt="منصة الاختبارات والتقييم">
+            <img src="https://school1school2-stack.github.io/Samy/preview1.jpg" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'200\' viewBox=\'0 0 400 200\'><rect width=\'100%\' height=\'100%\' fill=\'%23f5efe6\'/><text x=\'50%\' y=\'50%\' font-family=\'sans-serif\' font-weight=\'bold\' font-size=\'16\' fill=\'%237b1113\' text-anchor=\'middle\'>🎓 منصة بناء وتوزيع الأسئلة</text></svg>'" alt="منصة الاختبارات والتقييم">
             <span>واجهة بناء واستعلام الاختبارات والمصفوفات</span>
         </div>
         <div class="gallery-item">
-            <img src="1000256183_2.jpg" alt="لوحة التحليل الذكي">
+            <img src="https://school1school2-stack.github.io/Samy1/preview2.jpg" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'200\' viewBox=\'0 0 400 200\'><rect width=\'100%\' height=\'100%\' fill=\'%23f5efe6\'/><text x=\'50%\' y=\'50%\' font-family=\'sans-serif\' font-weight=\'bold\' font-size=\'16\' fill=\'%237b1113\' text-anchor=\'middle\'>📊 لوحة التحكم والتحليل اللحظي</text></svg>'" alt="لوحة التحليل الذكي">
             <span>لوحة التحليل الذكي والإحصائيات اللحظية</span>
         </div>
         <div class="gallery-item">
-            <img src="1000256187_2.jpg" alt="إدارة الطلاب المعتمدين">
+            <img src="https://school1school2-stack.github.io/Samy2/preview3.jpg" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'200\' viewBox=\'0 0 400 200\'><rect width=\'100%\' height=\'100%\' fill=\'%23f5efe6\'/><text x=\'50%\' y=\'50%\' font-family=\'sans-serif\' font-weight=\'bold\' font-size=\'16\' fill=\'%237b1113\' text-anchor=\'middle\'>👥 إدارة واعتماد قوائم الطلاب</text></svg>'" alt="إدارة الطلاب المعتمدين">
             <span>لوحة اعتماد الطلاب والرفع الجماعي للقوائم</span>
         </div>
         <div class="gallery-item">
-            <img src="1000255806_2.jpg" alt="إعدادات سحابة Firebase">
+            <img src="https://firebase.google.com/static/downloads/brand-guidelines/SDKs/Firebase_16x9_SDK.png" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'200\' viewBox=\'0 0 400 200\'><rect width=\'100%\' height=\'100%\' fill=\'%23f5efe6\'/><text x=\'50%\' y=\'50%\' font-family=\'sans-serif\' font-weight=\'bold\' font-size=\'16\' fill=\'%237b1113\' text-anchor=\'middle\'>🔥 إعدادات سحابة Firebase</text></svg>'" alt="إعدادات سحابة Firebase">
             <span>إعدادات الربط المباشر مع سحابة Firebase</span>
         </div>
     </div>
@@ -408,27 +378,27 @@
     <ul class="details-grid">
         <li>
             <strong>📈 المتابعة اللحظية والتحليل الذكي:</strong>
-            تتيح لوحة التحكم متابعة <span class="highlight-maroon">نتائج الطلاب فور حدوثها</span>، مع تقديم إحصائيات بيانية دقيقة وشاملة لنسب الأداء، وإبراز تلقائي لـ <span class="highlight-maroon">أعلى 5 طلاب أداءً</span> وأقل 5 طلاب بحاجة لمتابعة.
+            تتيح لوحة التحكم متابعة <span class="highlight-maroon">نتائج الطلاب فور حدوثها</span>، مع تقديم إحصائيات بيانية دقيقة وشاملة لنسب الأداء، وإبراز تلقائي لـ <span class="highlight-maroon">أعلى 5 طلاب أداءً</span> وأقل 5 طلاب بحاجة لمتابعة.[span_0](start_span)[span_0](end_span)[span_1](start_span)[span_1](end_span)
         </li>
         <li>
             <strong>☁️ الحفظ والانعكاس السحابي الفوري:</strong>
-            أي تعديل أو حفظ يتم في المنظومة <span class="highlight-maroon">ينعكس في نفس اللحظة</span> على سحابة Firebase، مما يضمن تزامن البيانات فورياً بين المعلم والطالب دون الحاجة لإعادة تحميل الصفحة.
+            أي تعديل أو حفظ يتم في المنظومة <span class="highlight-maroon">ينعكس في نفس اللحظة</span> على سحابة Firebase، مما يضمن تزامن البيانات فورياً بين المعلم والطالب دون الحاجة لإعادة تحميل الصفحة.[span_2](start_span)[span_2](end_span)[span_3](start_span)[span_3](end_span)
         </li>
         <li>
             <strong>🚀 استيراد الأسئلة دفعة واحدة:</strong>
-            تتضمن المنصة ميزة <span class="highlight-maroon">لصق مصفوفة الأسئلة دفعة واحدة</span> دون أي جهد يدوي، ليتم توزيع الأسئلة وتفنيدها على أقسام الاختبار وفئاته خلال ثوانٍ معدودة.
+            تتضمن المنصة ميزة <span class="highlight-maroon">لصق مصفوفة الأسئلة دفعة واحدة</span> دون أي جهد يدوي، ليتم توزيع الأسئلة وتفنيدها على أقسام الاختبار وفئاته خلال ثوانٍ معدودة.[span_4](start_span)[span_4](end_span)
         </li>
         <li>
             <strong>✏️ إدارة الأسئلة والخلط العشوائي:</strong>
-            إمكانية التعديل على أي سؤال مع انعكاسه الفوري في المصفوفة، وإنشاء روابط مشاركة مخصصة للطلاب، مع ميزة <span class="highlight-maroon">الخلط العشوائي لأماكن الأسئلة</span> لمنع التخمين.
+            إمكانية التعديل على أي سؤال مع انعكاسه الفوري في المصفوفة، وإنشاء روابط مشاركة مخصصة للطلاب، مع ميزة <span class="highlight-maroon">الخلط العشوائي لأماكن الأسئلة</span> لمنع التخمين.[span_5](start_span)[span_5](end_span)[span_6](start_span)[span_6](end_span)
         </li>
         <li>
             <strong>🔒 التوثيق عبر بريد منصة مدرستي:</strong>
-            حماية كاملة للاختبار بحيث <span class="highlight-maroon">لا يمكن للطالب الدخول إلا بإيميل مدرستي</span> المضاف والمعتمد مسبقاً في الرابط الثالث المخصص لإدارة الطلاب.
+            حماية كاملة للاختبار بحيث <span class="highlight-maroon">لا يمكن للطالب الدخول إلا بإيميل مدرستي</span> المضاف والمعتمد مسبقاً في الرابط الثالث المخصص لإدارة الطلاب.[span_7](start_span)[span_7](end_span)[span_8](start_span)[span_8](end_span)
         </li>
         <li>
             <strong>🤖 التكامل والمشاركة مع جمناي (Gemini):</strong>
-            إمكانية نسخ مصفوفة الأسئلة ومشاركتها مباشرة مع الذكاء الاصطناعي جمناي، لتوليد مصفوفات جديدة بنفس التركيبة والدقة بحسب الشروط والدروس المطلوبة.
+            إمكانية نسخ مصفوفة الأسئلة ومشاركتها مباشرة مع الذكاء الاصطناعي جمناي، لتوليد مصفوفات جديدة بنفس التركيبة والدقة بحسب الشروط والدروس المطلوبة.[span_9](start_span)[span_9](end_span)
         </li>
     </ul>
 
