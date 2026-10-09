@@ -10,74 +10,98 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
         :root {
-            --cream-bg: #fdfbf7;
-            --beige-card: #f5efe6;
-            --beige-border: #e6ccb2;
-            --maroon-primary: #7b1113;
-            --maroon-dark: #4a080a;
-            --red-accent: #9e2a2b;
-            --yellow-gold: #d4af37;
-            --gold-dark: #b8860b;
-            --text-dark: #2b1e1a;
-            --shadow-soft: 0 10px 25px rgba(123, 17, 19, 0.08);
+            --bg-gradient: linear-gradient(135deg, #fdfbf7 0%, #f4ede2 100%);
+            --card-gradient: linear-gradient(145deg, #ffffff 0%, #f7f1e5 100%);
+            --header-gradient: linear-gradient(135deg, #6b0f1a 0%, #b91c1c 50%, #831843 100%);
+            --gold-gradient: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
+            --accent-red: #9f1239;
+            --maroon-dark: #4c0519;
+            --text-main: #271c19;
+            --border-color: #e5d5c5;
+            --shadow-luxury: 0 12px 30px rgba(107, 15, 26, 0.12);
         }
 
         * { box-sizing: border-box; }
 
         body {
             font-family: 'Tajawal', sans-serif;
-            background-color: #e8dfd8;
-            color: var(--text-dark);
+            background: #e2d7cb;
+            color: var(--text-main);
             margin: 0;
             padding: 25px 15px;
             direction: rtl;
-            line-height: 1.7;
+            line-height: 1.8;
         }
 
         .paper-container {
-            max-width: 950px;
+            max-width: 980px;
             margin: auto;
-            background: var(--cream-bg);
+            background: var(--bg-gradient);
             padding: 45px;
-            border-radius: 24px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
-            border: 2px solid var(--beige-border);
+            border-radius: 28px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+            border: 2px solid #dfcfbe;
             position: relative;
         }
 
-        /* شريط الإهداء الفاخر */
-        .dedication-box {
-            background: linear-gradient(135deg, var(--maroon-primary), var(--maroon-dark));
-            color: #fff;
-            padding: 25px 30px;
-            border-radius: 18px;
-            border-right: 8px solid var(--yellow-gold);
-            margin-bottom: 30px;
-            box-shadow: 0 8px 20px rgba(123, 17, 19, 0.25);
+        /* كارت الإهداء الفاخر بتدرج عنابي وذهبي */
+        .dedication-card {
+            background: var(--header-gradient);
+            color: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            border-right: 10px solid #fbbf24;
+            margin-bottom: 35px;
+            box-shadow: 0 10px 25px rgba(107, 15, 26, 0.3);
+            position: relative;
+            overflow: hidden;
         }
 
-        .dedication-box h2 {
-            margin: 0 0 10px 0;
-            color: var(--yellow-gold);
-            font-size: 1.4rem;
+        .dedication-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(251, 191, 36, 0.15) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .dedication-card h2 {
+            margin: 0 0 12px 0;
+            color: #fef08a;
+            font-size: 1.5rem;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .dedication-card p {
+            margin: 0 0 15px 0;
+            font-size: 1.1rem;
+            line-height: 1.9;
+            color: #fff1f2;
+        }
+
+        .signature-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(5px);
+            padding: 8px 18px;
+            border-radius: 50px;
+            border: 1px solid rgba(251, 191, 36, 0.4);
+            color: #fef08a;
             font-weight: 800;
+            font-size: 1rem;
         }
-
-        .dedication-box p {
-            margin: 0;
-            font-size: 1.05rem;
-            line-height: 1.8;
-            color: #fceade;
-        }
-
-        .highlight-gold { color: var(--yellow-gold); font-weight: bold; }
-        .highlight-maroon { color: var(--maroon-primary); font-weight: 800; background-color: #fbe3e4; padding: 2px 8px; border-radius: 6px; }
 
         .header-section {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 3px double var(--yellow-gold);
+            border-bottom: 3px double #d4af37;
             padding-bottom: 20px;
             margin-bottom: 30px;
             gap: 15px;
@@ -85,29 +109,29 @@
         }
 
         .header-title h1 {
-            color: var(--maroon-primary);
+            color: var(--maroon-dark);
             margin: 0 0 5px 0;
-            font-size: 1.8rem;
+            font-size: 1.85rem;
             font-weight: 900;
         }
 
         .header-title h3 {
-            color: var(--gold-dark);
+            color: #9a3412;
             margin: 0;
             font-size: 1.15rem;
             font-weight: 700;
         }
 
         .print-btn {
-            background: linear-gradient(135deg, var(--yellow-gold), var(--gold-dark));
+            background: var(--gold-gradient);
             color: #ffffff;
             border: none;
-            padding: 12px 26px;
+            padding: 12px 28px;
             font-size: 1.05rem;
             font-weight: 800;
-            border-radius: 12px;
+            border-radius: 14px;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 5px 18px rgba(184, 134, 11, 0.4);
             font-family: inherit;
             display: flex;
             align-items: center;
@@ -117,27 +141,26 @@
 
         .print-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(184, 134, 11, 0.5);
+            box-shadow: 0 8px 25px rgba(184, 134, 11, 0.6);
         }
 
         .section-title {
-            background: linear-gradient(90deg, var(--beige-card), var(--cream-bg));
-            color: var(--maroon-primary);
-            padding: 12px 20px;
-            border-radius: 12px;
+            background: linear-gradient(90deg, #f3e8d9 0%, #fdfbf7 100%);
+            color: var(--maroon-dark);
+            padding: 12px 22px;
+            border-radius: 14px;
             font-size: 1.25rem;
             font-weight: 800;
             margin: 35px 0 20px 0;
-            border-right: 6px solid var(--maroon-primary);
-            border-left: 1px solid var(--beige-border);
-            border-top: 1px solid var(--beige-border);
-            border-bottom: 1px solid var(--beige-border);
+            border-right: 6px solid var(--accent-red);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
             display: flex;
             align-items: center;
             gap: 12px;
         }
 
-        /* شبكة الكروت للـ QR والروابط */
+        /* شبكة كروت الـ QR والروابط المحدثة بتدرج أنيق */
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -145,45 +168,55 @@
             margin-bottom: 30px;
         }
 
-        @media (max-width: 800px) { .grid-3 { grid-template-columns: 1fr; } }
+        @media (max-width: 850px) { .grid-3 { grid-template-columns: 1fr; } }
 
         .card-qr {
-            border: 2px solid var(--beige-border);
-            border-radius: 16px;
-            padding: 20px;
+            border: 2px solid var(--border-color);
+            border-radius: 18px;
+            padding: 22px;
             text-align: center;
-            background: var(--beige-card);
-            box-shadow: var(--shadow-soft);
+            background: var(--card-gradient);
+            box-shadow: var(--shadow-luxury);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
-            transition: 0.3s;
+            transition: 0.3s ease;
         }
 
-        .card-qr:hover { border-color: var(--yellow-gold); }
+        .card-qr:hover {
+            border-color: #d4af37;
+            transform: translateY(-4px);
+        }
 
         .card-qr h4 {
-            margin: 0 0 12px 0;
-            color: var(--maroon-primary);
-            font-size: 1.05rem;
+            margin: 0 0 10px 0;
+            color: var(--maroon-dark);
+            font-size: 1.1rem;
             font-weight: 800;
+        }
+
+        .card-qr p {
+            font-size: 0.85rem;
+            color: #57433c;
+            margin: 0 0 12px 0;
+            line-height: 1.5;
         }
 
         .qr-box {
             display: flex;
             justify-content: center;
-            margin: 10px 0;
+            margin: 8px 0;
             background: #ffffff;
             padding: 10px;
-            border-radius: 12px;
-            border: 1px solid var(--beige-border);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            border-radius: 14px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
         }
 
         .card-qr a {
             font-size: 0.8rem;
-            color: var(--red-accent);
+            color: var(--accent-red);
             word-break: break-all;
             text-decoration: none;
             font-weight: 700;
@@ -191,7 +224,7 @@
             display: block;
         }
 
-        /* معرض الصور المرفوعة على GitHub */
+        /* معرض صور واجهات المنظومة المربوطة بالملفات */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -202,11 +235,11 @@
         @media (max-width: 768px) { .gallery-grid { grid-template-columns: 1fr; } }
 
         .gallery-item {
-            background: var(--beige-card);
-            border: 2px solid var(--beige-border);
-            border-radius: 16px;
-            padding: 12px;
-            box-shadow: var(--shadow-soft);
+            background: var(--card-gradient);
+            border: 2px solid var(--border-color);
+            border-radius: 18px;
+            padding: 14px;
+            box-shadow: var(--shadow-luxury);
             text-align: center;
         }
 
@@ -215,50 +248,64 @@
             height: 220px;
             object-fit: contain;
             background: #ffffff;
-            border-radius: 10px;
-            border: 1px solid var(--beige-border);
-            margin-bottom: 10px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 12px;
         }
 
         .gallery-item span {
             font-size: 0.95rem;
             font-weight: 800;
-            color: var(--maroon-primary);
+            color: var(--maroon-dark);
             display: block;
         }
 
-        .details-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            padding: 0;
-            list-style: none;
-            margin: 0 0 30px 0;
+        /* شروحات موسعة للأنظمة */
+        .site-details-box {
+            background: var(--card-gradient);
+            border: 1px solid var(--border-color);
+            border-radius: 18px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-right: 5px solid var(--gold-gradient);
+            box-shadow: var(--shadow-luxury);
         }
 
-        @media (max-width: 768px) { .details-grid { grid-template-columns: 1fr; } }
-
-        .details-grid li {
-            background: var(--beige-card);
-            border: 1px solid var(--beige-border);
-            padding: 16px 20px;
-            border-radius: 16px;
-            font-size: 0.95rem;
-            line-height: 1.7;
-            box-shadow: var(--shadow-soft);
-            border-right: 4px solid var(--red-accent);
+        .site-details-box h3 {
+            margin: 0 0 10px 0;
+            color: var(--maroon-dark);
+            font-size: 1.15rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .details-grid li strong {
-            color: var(--maroon-primary);
-            display: block;
-            margin-bottom: 6px;
-            font-size: 1.05rem;
+        .site-details-box p {
+            margin: 0 0 10px 0;
+            font-size: 0.98rem;
+            line-height: 1.8;
+            color: #3f2e29;
+        }
+
+        .site-details-box ul {
+            margin: 0;
+            padding-right: 20px;
+            font-size: 0.92rem;
+            color: #4a3832;
+        }
+
+        .highlight-text {
+            color: var(--accent-red);
+            font-weight: 800;
+            background: #fbe8eb;
+            padding: 2px 6px;
+            border-radius: 4px;
         }
 
         .code-block {
-            background-color: #2b1e1a;
-            color: #ffd166;
+            background-color: #1e120e;
+            color: #fde047;
             padding: 20px;
             border-radius: 16px;
             font-family: 'Courier New', Courier, monospace;
@@ -268,7 +315,7 @@
             max-height: 320px;
             overflow-y: auto;
             white-space: pre-wrap;
-            border: 2px solid var(--yellow-gold);
+            border: 2px solid #d4af37;
             line-height: 1.5;
             box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
         }
@@ -277,8 +324,8 @@
             margin-top: 40px;
             text-align: center;
             font-weight: 800;
-            color: var(--maroon-primary);
-            border-top: 2px dashed var(--yellow-gold);
+            color: var(--maroon-dark);
+            border-top: 2px dashed #d4af37;
             padding-top: 20px;
             font-size: 0.95rem;
         }
@@ -290,9 +337,9 @@
             }
             .no-print { display: none !important; }
             .code-block {
-                max-height: none; overflow: visible; white-space: pre-wrap; font-size: 0.72rem; background-color: #1a100c !important; color: #ffd166 !important;
+                max-height: none; overflow: visible; white-space: pre-wrap; font-size: 0.72rem; background-color: #120907 !important; color: #fde047 !important;
             }
-            .card-qr, .gallery-item, .details-grid li { break-inside: avoid; }
+            .card-qr, .gallery-item, .site-details-box { break-inside: avoid; }
             @page { size: A4; margin: 1.2cm; }
         }
     </style>
@@ -301,12 +348,15 @@
 
 <div class="paper-container">
 
-    <!-- شريط الإهداء الفاخر -->
-    <div class="dedication-box">
+    <!-- شريط الإهداء الفاخر بتصميم المتدرج -->
+    <div class="dedication-card">
         <h2>🎁 إهداء خاص وتقدير رفيع</h2>
         <p>
-            إلى سعادة <strong>الدكتور / سامي بن محمد العمر</strong> (حفظه الله تعالى)، نُهدي إليكم هذه <span class="highlight-gold">المنظومة الرقمية الشاملة لإدارة الاختبارات والتحليل الذكي</span>. تم ربطها وتطويرها خصيصاً على سحابة <strong>Firebase</strong> وتطبيقها عبر منصات <strong>GitHub Pages</strong>، لتكون أداتكم المتكاملة في إدارة وتقويم العملية التعليمية بكل سلاسة واحترافية.
+            إلى سعادة <strong>الدكتور / سامي بن محمد العمر</strong> (حفظه الله تعالى)، نُهدي إليكم هذه المنظومة الرقمية الكلية والحديثة لإدارة وتطوير الاختبارات الإلكترونية والتحليل الذكي لنتائج الطلاب، والمربوطة بسحابة <strong>Firebase</strong> على مستودعات <strong>GitHub Pages</strong>.
         </p>
+        <div class="signature-badge">
+            ✍️ مهداة من الأستاذ عبدالعزيز الفيفي — مع توفر الدعم والمساندة الدائمة 🤝
+        </div>
     </div>
 
     <!-- رأس ورقة العمل -->
@@ -320,14 +370,15 @@
         </button>
     </div>
 
-    <!-- قسم المنصات والروابط والـ QR -->
+    <!-- قسم الروابط والـ QR ثلاثي الأبعاد -->
     <div class="section-title">
-        <i class="fas fa-qrcode"></i> المنصات الثلاث للوصول السريع (مزودة بأكواد QR)
+        <i class="fas fa-qrcode"></i> الروابط الرئيسية للمواقع الثلاثة (مزودة بأكواد QR)
     </div>
 
     <div class="grid-3">
         <div class="card-qr">
             <h4>1️⃣ منصة الاختبارات والتقييم</h4>
+            <p>الموقع المخصص للطلاب لأداء الاختبارات وتوليد الأسئلة من المصفوفة.</p>
             <div class="qr-box" id="qr1"></div>
             <a href="https://school1school2-stack.github.io/Samy" target="_blank">school1school2-stack.github.io/Samy</a>
         </div>
@@ -335,11 +386,13 @@
         <div class="card-qr">
             <h4>2️⃣ لوحة التحكم والتحليل الذكي</h4>
             <div class="qr-box" id="qr2"></div>
+            <p>اللوحة التحليلية الشاملة لعرض النتائج والرسوم البيانية لحظياً.</p>
             <a href="https://school1school2-stack.github.io/Samy1" target="_blank">school1school2-stack.github.io/Samy1</a>
         </div>
 
         <div class="card-qr">
             <h4>3️⃣ لوحة إدارة الطلاب والاعتمادات</h4>
+            <p>نظام إدارة القوائم واعتماد دخول منصة مدرستي والرفع الجماعي.</p>
             <div class="qr-box" id="qr3"></div>
             <a href="https://school1school2-stack.github.io/Samy2" target="_blank">school1school2-stack.github.io/Samy2</a>
         </div>
@@ -347,63 +400,66 @@
 
     <!-- قسم الصور المرفوعة والمربوطة بالمستودع -->
     <div class="section-title">
-        <i class="fas fa-images"></i> الواجهات والبيانات التشغيلية داخل المنظومة
+        <i class="fas fa-images"></i> صور الواجهات التشغيلية المعتمدة من المستودع
     </div>
 
     <div class="gallery-grid">
         <div class="gallery-item">
-            <img src="samy.png" alt="منصة الاختبارات والتقييم">
+            <img src="samy.bdf" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'200\' viewBox=\'0 0 400 200\'><rect width=\'100%\' height=\'100%\' fill=\'%23f7f1e5\'/><text x=\'50%\' y=\'50%\' font-family=\'sans-serif\' font-weight=\'bold\' font-size=\'16\' fill=\'%236b0f1a\' text-anchor=\'middle\'>🎓 منصة بناء وتوزيع الأسئلة</text></svg>'" alt="منصة الاختبارات والتقييم">
             <span>واجهة بناء واستعلام الاختبارات والمصفوفات</span>
         </div>
         <div class="gallery-item">
-            <img src="sam.png" alt="لوحة التحليل الذكي">
+            <img src="sam.bdf" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'200\' viewBox=\'0 0 400 200\'><rect width=\'100%\' height=\'100%\' fill=\'%23f7f1e5\'/><text x=\'50%\' y=\'50%\' font-family=\'sans-serif\' font-weight=\'bold\' font-size=\'16\' fill=\'%236b0f1a\' text-anchor=\'middle\'>📊 لوحة التحكم والتحليل اللحظي</text></svg>'" alt="لوحة التحليل الذكي">
             <span>لوحة التحليل الذكي والإحصائيات اللحظية</span>
         </div>
         <div class="gallery-item">
-            <img src="SAMY.png" alt="إدارة الطلاب المعتمدين">
+            <img src="SAMY.bdf" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'200\' viewBox=\'0 0 400 200\'><rect width=\'100%\' height=\'100%\' fill=\'%23f7f1e5\'/><text x=\'50%\' y=\'50%\' font-family=\'sans-serif\' font-weight=\'bold\' font-size=\'16\' fill=\'%236b0f1a\' text-anchor=\'middle\'>👥 إدارة واعتماد قوائم الطلاب</text></svg>'" alt="إدارة الطلاب المعتمدين">
             <span>لوحة اعتماد الطلاب والرفع الجماعي للقوائم</span>
         </div>
         <div class="gallery-item">
-            <img src="Samu.png" alt="إعدادات سحابة Firebase">
+            <img src="Samu.bdf" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'200\' viewBox=\'0 0 400 200\'><rect width=\'100%\' height=\'100%\' fill=\'%23f7f1e5\'/><text x=\'50%\' y=\'50%\' font-family=\'sans-serif\' font-weight=\'bold\' font-size=\'16\' fill=\'%236b0f1a\' text-anchor=\'middle\'>🔥 إعدادات سحابة Firebase</text></svg>'" alt="إعدادات سحابة Firebase">
             <span>إعدادات الربط المباشر مع سحابة Firebase</span>
         </div>
     </div>
 
-    <!-- قسم الشرح والتفاصيل والمزايا التقنية -->
+    <!-- تفاصيل وشروحات عميقة لكل موقع من المواقع الثلاثة -->
     <div class="section-title">
-        <i class="fas fa-cogs"></i> التوسع التفصيلي لأبرز مزايا المنظومة
+        <i class="fas fa-laptop-code"></i> تفاصيل وشروحات المواقع والمزايا التقنية
     </div>
 
-    <ul class="details-grid">
-        <li>
-            <strong>📈 المتابعة اللحظية والتحليل الذكي:</strong>
-            تتيح لوحة التحكم متابعة <span class="highlight-maroon">نتائج الطلاب فور حدوثها</span>، مع تقديم إحصائيات بيانية دقيقة وشاملة لنسب الأداء، وإبراز تلقائي لـ <span class="highlight-maroon">أعلى 5 طلاب أداءً</span> وأقل 5 طلاب بحاجة لمتابعة.[span_0](start_span)[span_0](end_span)[span_1](start_span)[span_1](end_span)
-        </li>
-        <li>
-            <strong>☁️ الحفظ والانعكاس السحابي الفوري:</strong>
-            أي تعديل أو حفظ يتم في المنظومة <span class="highlight-maroon">ينعكس في نفس اللحظة</span> على سحابة Firebase، مما يضمن تزامن البيانات فورياً بين المعلم والطالب دون الحاجة لإعادة تحميل الصفحة.[span_2](start_span)[span_2](end_span)[span_3](start_span)[span_3](end_span)
-        </li>
-        <li>
-            <strong>🚀 استيراد الأسئلة دفعة واحدة:</strong>
-            تتضمن المنصة ميزة <span class="highlight-maroon">لصق مصفوفة الأسئلة دفعة واحدة</span> دون أي جهد يدوي، ليتم توزيع الأسئلة وتفنيدها على أقسام الاختبار وفئاته خلال ثوانٍ معدودة.[span_4](start_span)[span_4](end_span)
-        </li>
-        <li>
-            <strong>✏️ إدارة الأسئلة والخلط العشوائي:</strong>
-            إمكانية التعديل على أي سؤال مع انعكاسه الفوري في المصفوفة، وإنشاء روابط مشاركة مخصصة للطلاب، مع ميزة <span class="highlight-maroon">الخلط العشوائي لأماكن الأسئلة</span> لمنع التخمين.[span_5](start_span)[span_5](end_span)[span_6](start_span)[span_6](end_span)
-        </li>
-        <li>
-            <strong>🔒 التوثيق عبر بريد منصة مدرستي:</strong>
-            حماية كاملة للاختبار بحيث <span class="highlight-maroon">لا يمكن للطالب الدخول إلا بإيميل مدرستي</span> المضاف والمعتمد مسبقاً في الرابط الثالث المخصص لإدارة الطلاب.[span_7](start_span)[span_7](end_span)[span_8](start_span)[span_8](end_span)
-        </li>
-        <li>
-            <strong>🤖 التكامل والمشاركة مع جمناي (Gemini):</strong>
-            إمكانية نسخ مصفوفة الأسئلة ومشاركتها مباشرة مع الذكاء الاصطناعي جمناي، لتوليد مصفوفات جديدة بنفس التركيبة والدقة بحسب الشروط والدروس المطلوبة.[span_9](start_span)[span_9](end_span)
-        </li>
-    </ul>
+    <div class="site-details-box">
+        <h3>🌐 1. منصة الاختبارات الإلكترونية التفاعلية (Samy)</h3>
+        <p>تُعد هذه المنصة الواجهة الرئيسية المخصصة للطلاب والمعلمين، وتتميز بـ:</p>
+        <ul>
+            <li><span class="highlight-text">لصق الأسئلة دفعة واحدة:</span> إمكانية نسخ مصفوفة الأسئلة كاملة بلحظة واحدة وتوزيعها تلقائياً على أقسام الاختبار بدون جهد يدوي.[span_0](start_span)[span_0](end_span)</li>
+            <li><span class="highlight-text">تعديل وتحديث فوري:</span> عند التعديل على أي سؤال ينعكس ذلك فوراً في مصفوفة الأسئلة والسحابة.[span_1](start_span)[span_1](end_span)[span_2](start_span)[span_2](end_span)</li>
+            <li><span class="highlight-text">الخلط العشوائي وإنشاء الروابط:</span> خلط ترتيب الأسئلة عشوائياً لكل طالب على حدة لضمان الشفافية، مع توليد رابط مشاركة فريد لكل نموذج اختبار.[span_3](start_span)[span_3](end_span)[span_4](start_span)[span_4](end_span)</li>
+        </ul>
+    </div>
 
-    <!-- قسم مصفوفة الأسئلة البرمجية -->
+    <div class="site-details-box">
+        <h3>📊 2. لوحة التحليل الذكي والمتابعة اللحظية (Samy1)</h3>
+        <p>مركز العمليات والتحليل الإحصائي المباشر لنتائج الطلاب، ويشمل المزايا التالية:</p>
+        <ul>
+            <li><span class="highlight-text">المتابعة اللحظية المباشرة:</span> مشاهدة إجابات الطلاب والدرجات لحظة بلحظة فور اعتماد الطالب لإجابته.[span_5](start_span)[span_5](end_span)</li>
+            <li><span class="highlight-text">تحليل المستويات والترتيب:</span> رسم بياني دقيق يحدد مستويات الطلاب وتصنيف تلقائي لـ <span class="highlight-text">أفضل 5 طلاب أداءً</span> و <span class="highlight-text">أقل 5 طلاب في الدرجات</span> لسرعة التدخل والدعم.[span_6](start_span)[span_6](end_span)[span_7](start_span)[span_7](end_span)</li>
+            <li><span class="highlight-text">تحديث ومراجعة الدرجات:</span> إمكانية مراجعة نموذج إجابات الطالب وتعديل الدرجات أو حذف المحاولة لإعادتها بسلاسة.[span_8](start_span)[span_8](end_span)</li>
+        </ul>
+    </div>
+
+    <div class="site-details-box">
+        <h3>🔒 3. لوحة إدارة الطلاب والاعتمادات السحابية (Samy2)</h3>
+        <p>منظومة الأمان والتحكم بقوائم الطلاب المصرح لهم بالاختبار، وتوفر:</p>
+        <ul>
+            <li><span class="highlight-text">الربط ببريد منصة مدرستي:</span> حصر دخول الاختبار للطلاب المعتمدين فقط بالبريد الرسمي المضاف في هذه اللوحة.[span_9](start_span)[span_9](end_span)[span_10](start_span)[span_10](end_span)</li>
+            <li><span class="highlight-text">الرفع الجماعي السريع:</span> إمكانية نسخ وبث قائمة الطلاب والإيميلات دفعة واحدة ليتم اعتمادهم سحابياً مباشرة.[span_11](start_span)[span_11](end_span)</li>
+            <li><span class="highlight-text">المزامنة مع سحابة Firebase:</span> مزامنة متكاملة ومشفرة تحفظ حقوق وتفاصيل كل طالب بدقة عالية.[span_12](start_span)[span_12](end_span)[span_13](start_span)[span_13](end_span)</li>
+        </ul>
+    </div>
+
+    <!-- قسم مصفوفة الأسئلة البرمجية ومشاركتها مع Gemini -->
     <div class="section-title">
-        <i class="fas fa-code"></i> مصفوفة الأسئلة البرمجية الكاملة المعتمدة
+        <i class="fas fa-brain"></i> مصفوفة الأسئلة البرمجية (للمشاركة والتوليد مع جمناي)
     </div>
 
     <div class="code-container">
@@ -601,7 +657,7 @@
   {
     "t": "صحح الخطأ",
     "q": "الخطأ: التفسير بالمأثور يقصد به الاعتماد على الاجتهاد واللغة دون أثر معثور.",
-    "ans": "التفسير بالمأثور هو التفسير بالنقل عن القرآن أو السنة أو الصحابة أو التابعين",
+    "ans": "التفسير بالمأثور هو التفسير بالنقل عن القرآن أو السنة أو الصحابة والتابعين",
     "score": 1
   },
   {
@@ -658,7 +714,7 @@
 
     <!-- التذييل النهائي -->
     <div class="footer">
-        منظومة الاختبارات الرقمية والتحليل الذكي - إعداد وتصميم مخصص للدكتور سامي بن محمد العمر © 2026
+        منظومة الاختبارات الرقمية والتحليل الذكي — إهداء خاص للدكتور سامي بن محمد العمر من الأستاذ عبدالعزيز الفيفي © 2026
     </div>
 
 </div>
