@@ -20,9 +20,53 @@
             --gold-dark: #b8860b;
             --text-dark: #2b1e1a;
             --shadow-soft: 0 10px 25px rgba(123, 17, 19, 0.08);
+            --code-bg: #2b1e1a;
         }
 
-        * { box-sizing: border-box; }
+        /* الثيمات المختلفة */
+        body.theme-dark {
+            --cream-bg: #121212;
+            --beige-card: #1e1e1e;
+            --beige-border: #333333;
+            --maroon-primary: #ff5252;
+            --maroon-dark: #c62828;
+            --red-accent: #ff7979;
+            --yellow-gold: #ffb142;
+            --gold-dark: #e1b12c;
+            --text-dark: #f5f6fa;
+            --shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.4);
+            background-color: #0a0a0a !important;
+        }
+
+        body.theme-emerald {
+            --cream-bg: #f4fbf7;
+            --beige-card: #e2f0ea;
+            --beige-border: #b5dfd0;
+            --maroon-primary: #0f5132;
+            --maroon-dark: #052c16;
+            --red-accent: #198754;
+            --yellow-gold: #ffc107;
+            --gold-dark: #d39e00;
+            --text-dark: #102218;
+            --shadow-soft: 0 10px 25px rgba(15, 81, 50, 0.08);
+            background-color: #d1efe2 !important;
+        }
+
+        body.theme-navy {
+            --cream-bg: #f4f6f9;
+            --beige-card: #e6ecf5;
+            --beige-border: #cbd5e1;
+            --maroon-primary: #1e3a8a;
+            --maroon-dark: #0f172a;
+            --red-accent: #3b82f6;
+            --yellow-gold: #f59e0b;
+            --gold-dark: #d97706;
+            --text-dark: #0f172a;
+            --shadow-soft: 0 10px 25px rgba(30, 58, 138, 0.08);
+            background-color: #cbd5e1 !important;
+        }
+
+        * { box-sizing: border-box; transition: background-color 0.3s, color 0.3s, border-color 0.3s; }
 
         body {
             font-family: 'Tajawal', sans-serif;
@@ -43,6 +87,53 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
             border: 2px solid var(--beige-border);
             position: relative;
+        }
+
+        /* شريط محول الثيمات العلوي */
+        .theme-switcher-bar {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 25px;
+            background: var(--beige-card);
+            padding: 10px 15px;
+            border-radius: 12px;
+            border: 1px solid var(--beige-border);
+        }
+
+        .theme-switcher-bar span {
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: var(--maroon-primary);
+            margin-left: 5px;
+        }
+
+        .theme-btn {
+            border: none;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 700;
+            cursor: pointer;
+            background: var(--cream-bg);
+            color: var(--text-dark);
+            border: 1px solid var(--beige-border);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .theme-btn:hover {
+            border-color: var(--yellow-gold);
+            transform: translateY(-1px);
+        }
+
+        .theme-btn.active {
+            background: var(--maroon-primary);
+            color: #fff;
+            border-color: var(--maroon-primary);
         }
 
         /* شريط الإهداء الفاخر */
@@ -83,7 +174,7 @@
         }
 
         .highlight-gold { color: var(--yellow-gold); font-weight: bold; }
-        .highlight-maroon { color: var(--maroon-primary); font-weight: 800; background-color: #fbe3e4; padding: 2px 8px; border-radius: 6px; }
+        .highlight-maroon { color: var(--maroon-primary); font-weight: 800; background-color: var(--beige-card); border: 1px solid var(--beige-border); padding: 2px 8px; border-radius: 6px; }
 
         .header-section {
             border-bottom: 3px double var(--yellow-gold);
@@ -137,11 +228,11 @@
             align-items: center;
             gap: 6px;
             transition: 0.3s;
-            box-shadow: 0 4px 10px rgba(123, 17, 19, 0.2);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
         .copy-btn:hover {
-            background-color: var(--maroon-dark);
+            opacity: 0.9;
             transform: translateY(-2px);
         }
 
@@ -169,10 +260,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: space-between;
-            transition: 0.3s;
         }
-
-        .card-qr:hover { border-color: var(--yellow-gold); }
 
         .card-qr h4 {
             margin: 0 0 12px 0;
@@ -267,7 +355,7 @@
         }
 
         .code-block {
-            background-color: #2b1e1a;
+            background-color: #1a100c;
             color: #ffd166;
             padding: 20px;
             border-radius: 16px;
@@ -298,7 +386,7 @@
             .paper-container {
                 box-shadow: none; border: none; padding: 0; max-width: 100%; width: 100%; background: white;
             }
-            .copy-btn { display: none; }
+            .copy-btn, .theme-switcher-bar { display: none; }
             .code-block {
                 max-height: none; overflow: visible; white-space: pre-wrap; font-size: 0.72rem; background-color: #1a100c !important; color: #ffd166 !important;
             }
@@ -310,6 +398,15 @@
 <body>
 
 <div class="paper-container">
+
+    <!-- شريط تبديل الثيمات -->
+    <div class="theme-switcher-bar">
+        <span><i class="fas fa-palette"></i> اختر الثيم:</span>
+        <button class="theme-btn" id="btn-classic" onclick="setTheme('classic', this)"><i class="fas fa-crown"></i> الكلاسيكي</button>
+        <button class="theme-btn" id="btn-dark" onclick="setTheme('dark', this)"><i class="fas fa-moon"></i> الليلي</button>
+        <button class="theme-btn" id="btn-emerald" onclick="setTheme('emerald', this)"><i class="fas fa-leaf"></i> الزمردي</button>
+        <button class="theme-btn" id="btn-navy" onclick="setTheme('navy', this)"><i class="fas fa-graduation-cap"></i> الأكاديمي</button>
+    </div>
 
     <!-- شريط الإهداء الفاخر -->
     <div class="dedication-box">
@@ -414,7 +511,7 @@
     <!-- قسم مصفوفة الأسئلة البرمجية -->
     <div class="section-title">
         <span><i class="fas fa-code"></i> مصفوفة الأسئلة البرمجية الكاملة المعتمدة</span>
-        <button class="copy-btn" onclick="copyMatrixCode()"><i class="fas fa-copy"></i> نسخ المصفوفة كاملة</button>
+        <button class="copy-btn" onclick="copyMatrixCode()"><i class="fas fa-copy"></i> نسخ المصفوفة كامدة</button>
     </div>
 
     <div class="code-container">
@@ -612,7 +709,7 @@
   {
     "t": "صحح الخطأ",
     "q": "الخطأ: التفسير بالمأثور يقصد به الاعتماد على الاجتهاد واللغة دون أثر معثور.",
-    "ans": "التفسير بالمأثور هو التفسير بالنقل أو القرآن أو السنة أو الصحابة أو التابعين",
+    "ans": "التفسير بالمأثور هو التفسير بالنقل عن القرآن أو السنة أو الصحابة أو التابعين",
     "score": 1
   },
   {
@@ -675,7 +772,7 @@
 </div>
 
 <script>
-    // توليد أكواد الـ QR تلقائياً عند فتح الورقة
+    // توليد أكواد الـ QR وتعيين ثيم عشوائي عند فتح الصفحة أو تحديثها
     window.onload = function() {
         new QRCode(document.getElementById("qr1"), {
             text: "https://school1school2-stack.github.io/Samy",
@@ -694,7 +791,35 @@
             width: 105,
             height: 105
         });
+
+        // اختيار ثيم عشوائي تلقائياً عند كل تحديث
+        const themes = ['classic', 'dark', 'emerald', 'navy'];
+        const randomTheme = themes[Math.floor(Math.random() * themes.length)];
+        const targetBtn = document.getElementById('btn-' + randomTheme);
+        setTheme(randomTheme, targetBtn);
     };
+
+    // دالة تغيير الثيمات
+    function setTheme(themeName, btnElement) {
+        const body = document.body;
+        body.className = ""; // إزالة أي كلاس ثيم سابق
+        
+        if (themeName === 'dark') {
+            body.classList.add('theme-dark');
+        } else if (themeName === 'emerald') {
+            body.classList.add('theme-emerald');
+        } else if (themeName === 'navy') {
+            body.classList.add('theme-navy');
+        }
+
+        // تحديث حالة الأزرار النشطة
+        document.querySelectorAll('.theme-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        if (btnElement) {
+            btnElement.classList.add('active');
+        }
+    }
 
     // دالة نسخ المصفوفة البرمجية بالكامل
     function copyMatrixCode() {
