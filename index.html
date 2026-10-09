@@ -222,14 +222,20 @@
             flex-wrap: wrap;
         }
 
-        .hint-text {
-            font-size: 0.82rem;
-            font-weight: 500;
-            color: var(--red-accent);
-            background: var(--cream-bg);
-            padding: 3px 10px;
-            border-radius: 20px;
-            border: 1px solid var(--beige-border);
+        /* تنسيق زر التوجيه ليطابق تماماً زر نسخ المصفوفة */
+        .hint-badge {
+            background-color: var(--maroon-primary);
+            color: #ffffff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
         .copy-btn {
@@ -404,7 +410,7 @@
             .paper-container {
                 box-shadow: none; border: none; padding: 0; max-width: 100%; width: 100%; background: white;
             }
-            .copy-btn, .theme-switcher-bar { display: none; }
+            .copy-btn, .theme-switcher-bar, .hint-badge { display: none; }
             .code-block {
                 max-height: none; overflow: visible; white-space: pre-wrap; font-size: 0.72rem; background-color: #1a100c !important; color: #ffd166 !important;
             }
@@ -447,10 +453,8 @@
 
     <!-- قسم المنصات والروابط والـ QR -->
     <div class="section-title">
-        <span>
-            <i class="fas fa-qrcode"></i> المنصات الثلاث للوصول السريع (مزودة بأكواد QR)
-            <span class="hint-text"><i class="fas fa-hand-pointer"></i> اضغط على الرابط للانتقال للموقع</span>
-        </span>
+        <span><i class="fas fa-qrcode"></i> المنصات الثلاث للوصول السريع (مزودة بأكواد QR)</span>
+        <span class="hint-badge"><i class="fas fa-hand-pointer"></i> اضغط على الرابط للانتقال للموقع</span>
     </div>
 
     <div class="grid-3">
