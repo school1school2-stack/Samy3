@@ -86,14 +86,9 @@
         .highlight-maroon { color: var(--maroon-primary); font-weight: 800; background-color: #fbe3e4; padding: 2px 8px; border-radius: 6px; }
 
         .header-section {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             border-bottom: 3px double var(--yellow-gold);
             padding-bottom: 20px;
             margin-bottom: 30px;
-            gap: 15px;
-            flex-wrap: wrap;
         }
 
         .header-title h1 {
@@ -108,28 +103,6 @@
             margin: 0;
             font-size: 1.15rem;
             font-weight: 700;
-        }
-
-        .print-btn {
-            background: linear-gradient(135deg, var(--yellow-gold), var(--gold-dark));
-            color: #ffffff;
-            border: none;
-            padding: 12px 26px;
-            font-size: 1.05rem;
-            font-weight: 800;
-            border-radius: 12px;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
-            font-family: inherit;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .print-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(184, 134, 11, 0.5);
         }
 
         .section-title {
@@ -298,7 +271,6 @@
             .paper-container {
                 box-shadow: none; border: none; padding: 0; max-width: 100%; width: 100%; background: white;
             }
-            .no-print { display: none !important; }
             .code-block {
                 max-height: none; overflow: visible; white-space: pre-wrap; font-size: 0.72rem; background-color: #1a100c !important; color: #ffd166 !important;
             }
@@ -326,11 +298,8 @@
     <div class="header-section">
         <div class="header-title">
             <h1>دليل المنظومة الكلية للاختبارات والتحليل الذكي 📜</h1>
-            <h3>وثيقة عمل تفصيلية قابلة للطباعة والتصدير المباشر (PDF)</h3>
+            <h3>وثيقة عمل تفصيلية قابلة للطباعة والتصدير المباشر</h3>
         </div>
-        <button class="print-btn no-print" onclick="window.print()">
-            <i class="fas fa-file-pdf"></i> طباعة / تصدير PDF
-        </button>
     </div>
 
     <!-- قسم المنصات والروابط والـ QR -->
